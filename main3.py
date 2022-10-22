@@ -32,7 +32,7 @@ prs = Presentation()
 
 # First Range Loop
 i = 1 # We must iterate through a variable and a specified range for each number of cells that we want per slide
-for cell in range1:# We must loop twice to get actual cell data, otherwise we are left with tuples
+for cell in range1:# We must loop twice to get actual cell data, otherwise we are left with tuples which will not output to PowerPoint
     for x in cell:
         if i == 1:
             slide_register = prs.slide_layouts[5]
