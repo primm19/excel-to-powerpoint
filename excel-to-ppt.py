@@ -19,6 +19,13 @@ range = worksheet['A4':'E269']
 
 presentation = Presentation()
 
+def set_text_and_color(paragraph, text, font_size, font_color):
+    p = paragraph
+    p.text = text
+    font = p.font
+    font.size = font_size
+    font.color.rgb = font_color
+
 def MakeIntroSlide():
     title_slide_layout = presentation.slide_layouts[0]
     slide = presentation.slides.add_slide(title_slide_layout)
@@ -67,43 +74,36 @@ def MakeSlides(range):
                 left = Inches(6.33)
                 top = Inches(2)
                 width = height = Inches(3.5)
-                txBox = slide.shapes.add_textbox(left, top, width, height)
 
+                txBox = slide.shapes.add_textbox(left, top, width, height)
                 tf = txBox.text_frame
                 tf.word_wrap = True
 
-                p = tf.add_paragraph()
-                p.text = x.value
-                p.font.size = Pt(24)
-                font = p.font
-                font.color.rgb = RGBColor(255, 255, 0)
-                p = tf.add_paragraph()
+                set_text_and_color(tf.add_paragraph(), x.value, Pt(24), RGBColor(255, 255, 0))
+
+                tf.add_paragraph()
 
                 i += 1
             elif i == 3:
-                p = tf.add_paragraph()
-                p.text = x.value
-                p.font.size = Pt(28)
-                font = p.font
-                font.color.rgb = RGBColor(255, 255, 0)
-                p = tf.add_paragraph()
 
+                set_text_and_color(tf.add_paragraph(), x.value, Pt(28), RGBColor(255, 255, 0))
+
+                tf.add_paragraph()
+                
                 i += 1
             elif i == 4:
-                p = tf.add_paragraph()
-                p.text = x.value
-                font = p.font
-                font.color.rgb = RGBColor(255, 255, 0)
-                p = tf.add_paragraph()
+
+                set_text_and_color(tf.add_paragraph(), x.value, Pt(28), RGBColor(255, 255, 0))
+
+                tf.add_paragraph()
 
                 i += 1
             elif i >= 5:
-                p = tf.add_paragraph()
-                p.text = x.value
-                font = p.font
-                font.color.rgb = RGBColor(255, 255, 0)
-                p = tf.add_paragraph()
-                
+
+                set_text_and_color(tf.add_paragraph(), x.value, Pt(28), RGBColor(255, 255, 0))
+
+                tf.add_paragraph()
+
                 i = 1
 
 MakeIntroSlide()
